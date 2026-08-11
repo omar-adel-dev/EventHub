@@ -1,0 +1,193 @@
+.navbar {
+  background: #111111;
+  border-bottom: 2px solid #FF6B00;
+  box-shadow: 0 2px 20px rgba(255, 107, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 80px;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+/* ── Wrapper ─────────────────────────────────── */
+.brand-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+/* ── Orange glowing orb (Dragon Ball) ────────── */
+.brand-orb {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 35%,
+    #FFD700 0%,
+    #FF6B00 50%,
+    #CC3300 100%
+  );
+  box-shadow:
+    0 0 10px rgba(255, 107, 0, 0.8),
+    0 0 25px rgba(255, 107, 0, 0.4),
+    0 0 50px rgba(255, 107, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  animation: orb-pulse 2.5s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+/* Shine glare on the orb */
+.brand-orb::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 7px;
+  width: 10px;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 50%;
+  transform: rotate(-30deg);
+  filter: blur(1px);
+}
+
+.brand-orb-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-orb-stars {
+  font-size: 0.45rem;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 1px;
+  line-height: 1;
+  text-shadow: 0 0 4px rgba(255,255,255,0.8);
+  user-select: none;
+}
+
+/* Pulsing glow animation */
+@keyframes orb-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 10px rgba(255, 107, 0, 0.8),
+      0 0 25px rgba(255, 107, 0, 0.4),
+      0 0 50px rgba(255, 107, 0, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 15px rgba(255, 215, 0, 1),
+      0 0 35px rgba(255, 107, 0, 0.7),
+      0 0 70px rgba(255, 107, 0, 0.4);
+  }
+}
+
+/* ── Text block ───────────────────────────────── */
+.brand-text-block {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-text-main {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  letter-spacing: 0.08em;
+  background: linear-gradient(135deg, #FF6B00 0%, #FFD700 60%, #FF6B00 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+  text-shadow: none;
+}
+
+
+/* Gold shimmer sweep on the main text */
+@keyframes shimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ── Hover effect on entire logo ─────────────── */
+.navbar-brand:hover .brand-orb {
+  transform: scale(1.12) rotate(10deg);
+}
+
+.navbar-brand:hover .brand-text-main {
+  animation-duration: 1s;
+}
+
+/* ── Responsive: hide subtitle on mobile ─────── */
+@media (max-width: 480px) {
+  .brand-text-main { font-size: 1.2rem; }
+  .brand-orb       { width: 32px; height: 32px; }
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.nav-link:hover {
+  color: #FF6B00;
+  background: rgba(255, 107, 0, 0.1);
+}
+
+.nav-link.active {
+  color: #FFD700;
+  background: rgba(255, 215, 0, 0.1);
+  border-bottom: 2px solid #FFD700;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--border);
+}
+
+.user-email {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 23, 68, 0.1);
+  color: var(--error);
+}

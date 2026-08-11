@@ -1,0 +1,23 @@
+# .NET
+bin/
+obj/
+*.user
+*.userosscache
+*.sln.doccache
+.vs/
+
+# Node
+node_modules/
+dist/
+dist-ssr/
+*.local
+.vscode/
+
+# Build outputs
+*.exe
+*.dll
+*.pdb
+
+# OS
+.DS_Store
+Thumbs.db
